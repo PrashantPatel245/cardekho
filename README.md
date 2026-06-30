@@ -1,20 +1,8 @@
 # Find My Car — CarDekho Assignment
 
-**Live URL:** Run deployment (see below) — `npx vercel --prod`
+**Live URL:** https://cardekho-tau.vercel.app
 
-## Deploy to Vercel
-
-```bash
-npx vercel login          # if not authenticated
-npx vercel --prod
-```
-
-## Push to GitHub
-
-```bash
-gh auth login             # if not authenticated
-gh repo create cardekho-find-my-car --public --source=. --push
-```
+**GitHub:** https://github.com/PrashantPatel245/cardekho
 
 A guided shortlisting tool that takes confused car buyers from "I don't know what to buy" to a confident top-5 shortlist in under 2 minutes.
 
