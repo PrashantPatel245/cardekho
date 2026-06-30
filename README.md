@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Find My Car — CarDekho Assignment
 
-## Getting Started
+**Live URL:** _Deploying — will be updated after Vercel deployment_
 
-First, run the development server:
+A guided shortlisting tool that takes confused car buyers from "I don't know what to buy" to a confident top-5 shortlist in under 2 minutes.
+
+## What I built and why
+
+Instead of building another car catalog, I focused on one sharp flow: a 6-question guided questionnaire that feeds a transparent weighted scoring engine ranking ~50 real Indian-market cars. Buyers get a ranked shortlist with "why this fits you" explanations, a top-3 comparison table, and live weight sliders to instantly re-rank — proving real computation, not a static list.
+
+## What I deliberately cut
+
+| Feature | Why it's out of scope |
+|---------|----------------------|
+| User accounts / auth | No persistence needed for MVP; adds friction |
+| Real review aggregation | Requires external APIs and moderation |
+| Dealer integration | Out of assignment scope; needs partnerships |
+| Financing calculators | Separate product surface; distracts from core flow |
+| Image galleries | Time-intensive asset curation; specs matter more here |
+| Admin panel | No CMS needed for a seeded static dataset |
+
+## Tech stack and why
+
+| Layer | Choice | Why |
+|-------|--------|-----|
+| Framework | Next.js 14 (App Router) + TypeScript | Single deployable full-stack unit with API routes |
+| Styling | Tailwind CSS + shadcn/ui | Fast, polished UI with accessible components |
+| Data | Typed TS dataset (`lib/data/cars.ts`) | Zero-config, Vercel-safe (no SQLite on read-only FS) |
+| Scoring | Pure functions in `lib/rank.ts` | Transparent, testable, instant client-side re-rank |
+| State | React hooks | Small scope; no Redux overhead |
+| Deploy | Vercel | Zero-config Next.js hosting with instant live URL |
+
+## AI tool usage
+
+This project was built **100% AI-native in Cursor** during a single session — no manual code edits. The AI agent made autonomous product and engineering decisions including: scoring algorithm weights and dimension design, dataset schema and car curation (~50 Indian models), UI flow structure (6-step card questionnaire → results with sliders), and tech stack selection (JSON over SQLite for Vercel compatibility). A human would normally intervene on scoring weight tuning, visual design review, and data accuracy verification. The screen recording documents the full build process.
+
+## Run instructions
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## With 4 more hours, I'd add
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Real review and spec data via a third-party automotive API
+- LLM-powered natural language intake ("tell me what you want") alongside the questionnaire
+- Save/share shortlist links (URL-encoded preferences + results)
+- Expand dataset to 200+ cars with advanced filters (transmission, brand, features)
+- Basic analytics on which scoring weights users adjust most
 
-## Learn More
+## Project structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+app/                  # Next.js pages and API routes
+components/           # Questionnaire, results, and UI components
+lib/data/cars.ts      # Seeded car dataset
+lib/rank.ts           # Weighted scoring engine
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT
